@@ -81,7 +81,9 @@ const init = async () => {
     validate: async (request, token, h) => {
       // here is where you validate your token
       // comparing with token from your database for example
-      const isValid = token === '1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h';
+      const isValid =
+        token ===
+        '1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h';
       const credentials = { token };
       const artifacts = { test: 'info' };
 
@@ -127,6 +129,10 @@ const init = async () => {
 
   //-------- Your Code continue here -------------------
 
+  /*-------------------------------------------*/
+  /* API Name: getOnlineAgentByAgentCode       */
+  /* Method: 'GET'                             */
+  /*-------------------------------------------*/
   server.route({
     method: 'GET',
     path: '/api/v1/getOnlineAgentByAgentCode',
@@ -156,7 +162,7 @@ const init = async () => {
         //return ('API1');
 
         if (param.agentcode == null)
-          return h.response('Please provide agentcode.').code(400);
+          return h.response({error:'Please provide agentcode.'}).code(400);
         else {
           const responsedata =
             await OnlineAgent.OnlineAgentRepo.getOnlineAgentByAgentCode(
@@ -181,6 +187,10 @@ const init = async () => {
     },
   });
 
+  /*-------------------------------------------*/
+  /* API Name: postOnlineAgentStatus       */
+  /* Method: 'POST'                             */
+  /*-------------------------------------------*/
   server.route({
     method: 'POST',
     path: '/api/v1/postOnlineAgentStatus',
@@ -208,24 +218,30 @@ const init = async () => {
       },
     },
     handler: async (request, h) => {
-      const { payload } = request;
+      let param = request.payload;
+
+      const AgentCode = param.AgentCode;
+      const AgentName = param.AgentName;
+      const IsLogin = param.IsLogin;
+      const AgentStatus = param.AgentStatus;
+      var d = new Date();
 
       try {
         //console.dir(payload);
-        console.log(payload.AgentCode);
-        console.log(payload.AgentName);
-        console.log(payload.IsLogin);
-        console.log(payload.AgentStatus);
+        console.log(AgentCode);
+        console.log(AgentName);
+        console.log(IsLogin);
+        console.log(AgentStatus);
 
-        if (payload.AgentCode == null)
+        if (AgentCode == null)
           return h.response('Please provide agentcode.').code(400);
         else {
           const responsedata =
             await OnlineAgent.OnlineAgentRepo.postOnlineAgentStatus(
-              payload.AgentCode,
-              payload.AgentName,
-              payload.IsLogin,
-              payload.AgentStatus
+              AgentCode,
+              AgentName,
+              IsLogin,
+              AgentStatus
             );
 
           if (responsedata.statusCode == 500)
