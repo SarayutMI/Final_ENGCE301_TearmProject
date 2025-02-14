@@ -1,2 +1,2 @@
-# engce301 - LAB5 Solution
+# engce301 - LAB6 Solution
 For ENGCE301 Class
