@@ -684,7 +684,7 @@
       var selectedValue = currentStatus.value;
       alert('Selected Text: ' + selectedText + ' Value: ' + selectedValue);
     }
-  
+
   </script>
 
   <!------------------------------------>
@@ -726,6 +726,11 @@
                 onclick="CallOnescreen(1,'0000')">
                 Pop-up Chrome
               </button>
+
+              <button id="NotifyBtn" class="btn btn-warning btn-sm btn-block mt-2" onclick="notify()">
+                Notification
+              </button>
+
               <button id="buttonDisConnect" class="btn btn-danger btn-sm shadow btn-block mt-2"
                 onclick="logoutFromAPI()">
                 Disconnect
