@@ -708,6 +708,7 @@
           <tr>
             <td class="text-white">
               <span class="text-blue badge bg-danger" id="ConnectionStatus">Disconnected</span>
+              <span id="statusLabel" class="badge bg-dark">N/A</span>
             </td>
           </tr>
           <tr>
@@ -735,6 +736,9 @@
                 onclick="logoutFromAPI()">
                 Disconnect
               </button>
+              <!-- Step7 Start  -->
+
+              <!-- Step7 End  -->
             </div>
           </div>
         </tr>
@@ -744,7 +748,7 @@
     <div id="display">
       <div class="row">
         <div class="col-12">
-          <div class="input-group mb-1">
+          <div class="input-group mb-3">
             <input type="text" class="form-control form-control-sm" id="agent" placeholder="Enter Agent Code" />
             <button id="buttonConnect" class="btn btn-warning btn-sm btn-block shadow" onclick="checkInput('on')">
               Connect
