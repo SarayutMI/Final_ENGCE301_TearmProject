@@ -22,6 +22,9 @@
 
     var AgentCode;
     var agentStatusID;
+    var AgentName;
+    var IsLogin;
+
     var callTotal = 0;
     var agentData;
 
@@ -223,7 +226,7 @@
 
       var formData = new FormData();
       formData.append('AgentCode', AgentCode);
-      //formData.append('AgentName', 'Test Agent 9998');
+      formData.append('AgentName', AgentName);
       formData.append('IsLogin', '1');
 
       var selectedText =
@@ -243,7 +246,7 @@
         },
         data: formData,
         success: function (result) {
-          console.log('postOnlineAgentStatus: ' + result);
+          console.log('postOnlineAgentStatus: ' + JSON.stringify(result));
         },
         processData: false,
         contentType: false,
@@ -277,6 +280,10 @@
                 response.data.IsLogin == 1 &&
                 response.data.AgentStatus != 9
               ) {
+
+                AgentName = response.data.AgentName;
+                IsLogin = response.data.IsLogin;
+
                 wsChecks = 'true';
                 console.log('new: ' + wsChecks);
                 //$("#errMessage").hide();
