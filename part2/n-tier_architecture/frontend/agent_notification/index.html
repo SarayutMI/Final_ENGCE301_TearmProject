@@ -220,7 +220,7 @@
           });
       }
     }
-    
+
     function changeAgentStatus(currentStatus) {
       //https://localhost:8443/api/v1/postOnlineAgentStatus
 
@@ -764,30 +764,19 @@
         <tr>
           <div class="row">
             <div class="col-sm-12 text-center">
-              <button
-              id="buttonCall"
-              class="btn btn-primary btn-sm shadow btn-block mt-2"
-              disable
-              onclick="CallOnescreen(1,'0000')"
-            >
-              Pop-up Chrome
-            </button>
+              <button id="buttonCall" class="btn btn-primary btn-sm shadow btn-block mt-2" disable
+                onclick="CallOnescreen(1,'0000')">
+                Pop-up Chrome
+              </button>
 
-            <button
-              id="NotifyBtn"
-              class="btn btn-warning btn-sm btn-block mt-2"
-              onclick="notify()"
-            >
-              Notification
-            </button>
+              <button id="NotifyBtn" class="btn btn-warning btn-sm btn-block mt-2" onclick="notify()">
+                Notification
+              </button>
 
-            <button
-              id="buttonDisConnect"
-              class="btn btn-danger btn-sm shadow btn-block mt-2"
-              onclick="logoutFromAPI()"
-            >
-              Disconnect
-            </button>
+              <button id="buttonDisConnect" class="btn btn-danger btn-sm shadow btn-block mt-2"
+                onclick="logoutFromAPI()">
+                Disconnect
+              </button>
 
               <div class="input-group mt-2">
                 <img id="help-and-support" src="./assets/icon/Help_And_Support.png" width="30px" height="30px" />
