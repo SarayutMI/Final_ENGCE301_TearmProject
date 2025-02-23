@@ -32,6 +32,8 @@
     //--Dev Server------------------------------
     var APIServer = 'https://172.27.87.8:8443/api/v1';
     var WebSecketServer = 'ws://172.27.87.8:3071';
+    //var APIServer = 'https://wsl.engce301.com:8443/api/v1';
+    //var WebSecketServer = 'ws://wsl.engce301.com:3071';
 
     //--Staging Server------------------------------
     //var APIServer = "https://lab-api.se-rmutl.net/engse207/api/v1";
@@ -50,6 +52,8 @@
     let ws;
 
     let checked;
+
+    //--- Notification see at: https://www.youtube.com/watch?v=MrPwuJX4VTg
 
     function notify() {
       const notification = {
@@ -95,16 +99,16 @@
 
     function messageNotify(ReceiveMessage) {
       /*
-                      const notification = {
-                          title: 'From: '+ReceiveMessage.FromAgentCode,
-                          //subtitle: 'Subtitle of the Notification',
-                          //body: '** '+ statusLabel+ ' **',
-                          body: 'Message: '+ReceiveMessage.Message +'\n'+'['+ReceiveMessage.DateTime+']',
-                          silent: false,
-                          requireInteraction: true,
-                          icon: path.join(__dirname, './assets/icon/impatient.png')
-                      }
-                      */
+              const notification = {
+                  title: 'From: '+ReceiveMessage.FromAgentCode,
+                  //subtitle: 'Subtitle of the Notification',
+                  //body: '** '+ statusLabel+ ' **',
+                  body: 'Message: '+ReceiveMessage.Message +'\n'+'['+ReceiveMessage.DateTime+']',
+                  silent: false,
+                  requireInteraction: true,
+                  icon: path.join(__dirname, './assets/icon/impatient.png')
+              }
+              */
       const notification = {
         title:
           ReceiveMessage.DateTime +
@@ -175,7 +179,7 @@
         callId: '',
       });
     }
-
+    
     function sendMessage() {
       if ($('#destAgent').val() == '') {
         alert('Please enter destination agent ');
@@ -212,6 +216,41 @@
             console.log('always called');
           });
       }
+    }
+    
+    function changeAgentStatus(currentStatus) {
+      //https://localhost:8443/api/v1/postOnlineAgentStatus
+
+      var formData = new FormData();
+      formData.append('AgentCode', '9998');
+      formData.append('AgentName', 'Test Agent 9998');
+      formData.append('IsLogin', '1');
+      //formData.append("AgentStatus", "1");
+
+      var selectedText =
+        currentStatus.options[currentStatus.selectedIndex].innerHTML;
+      var selectedValue = currentStatus.value;
+
+      formData.append('AgentStatus', selectedValue);
+
+      // alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+
+      $.ajax({
+        type: 'POST',
+        url: APIServer + '/postOnlineAgentStatus',
+        headers: {
+          Authorization:
+            'Bearer 1aaZ!ARgAQGuQzp00D5D000000.mOv2jmhXkfIsjgywpCIh7.HZpc6vED1LCbc90DTaVDJwdNqbTW5r4uZicv8AFfkOE1ialqnR8UN5.wnAgh090h',
+        },
+        data: formData,
+        success: function (result) {
+          console.log('postOnlineAgentStatus: ' + result);
+        },
+        processData: false,
+        contentType: false,
+        //dataType: "json",
+        //contentType: 'multipart/form-data',
+      });
     }
 
     function checkInput(status) {
@@ -308,7 +347,8 @@
             console.log('ERROR: net::ERR_INTERNET_DISCONNECTED');
             //$("#connectTime").empty().append("ERR_INTERNET_DISCONNECTED");
             //$('#connectTime').empty().removeClass().addClass('badge bg-danger').append('ERR_INTERNET_DISCONNECTED');
-            $('#connectTime').empty().append('ERROR: INTERNET DISCONNECTED');
+            //$('#connectTime').empty().append('ERROR: INTERNET DISCONNECTED');
+            $('#connectTime').empty().append('Agent not found.');
           },
         });
 
@@ -684,17 +724,13 @@
       var selectedValue = currentStatus.value;
       alert('Selected Text: ' + selectedText + ' Value: ' + selectedValue);
     }
-
   </script>
 
   <!------------------------------------>
-
 </head>
 
 <body data-window="main">
-
   <div class="warper">
-
     <div class="row">
       <div class="col-12">
         <table class="table table-sm fs-6">
@@ -711,8 +747,7 @@
               <span id="statusLabel" class="badge bg-dark">N/A</span>
             </td>
           </tr>
-          <tr>
-          </tr>
+          <tr></tr>
       </div>
       </tr>
       </table>
@@ -722,25 +757,35 @@
       <table class="table table-sm fs-6">
         <tr>
           <div class="row">
-            <div class="col-sm-12 text-center ">
-              <button id="buttonCall" class="btn btn-primary btn-sm shadow btn-block mt-2" disable
-                onclick="CallOnescreen(1,'0000')">
-                Pop-up Chrome
-              </button>
+            <div class="col-sm-12 text-center">
+              <button
+              id="buttonCall"
+              class="btn btn-primary btn-sm shadow btn-block mt-2"
+              disable
+              onclick="CallOnescreen(1,'0000')"
+            >
+              Pop-up Chrome
+            </button>
 
-              <button id="NotifyBtn" class="btn btn-warning btn-sm btn-block mt-2" onclick="notify()">
-                Notification
-              </button>
+            <button
+              id="NotifyBtn"
+              class="btn btn-warning btn-sm btn-block mt-2"
+              onclick="notify()"
+            >
+              Notification
+            </button>
 
-              <button id="buttonDisConnect" class="btn btn-danger btn-sm shadow btn-block mt-2"
-                onclick="logoutFromAPI()">
-                Disconnect
-              </button>
-               <!-- Step7 Start  -->
+            <button
+              id="buttonDisConnect"
+              class="btn btn-danger btn-sm shadow btn-block mt-2"
+              onclick="logoutFromAPI()"
+            >
+              Disconnect
+            </button>
 
-              <div class="input-group  mt-2">
-                <img id="help-and-support" src='./assets/icon/Help_And_Support.png' width="30px" height="30px" />
-                <select id="currentStatus" onchange="GetSelectedTextValue(this)">
+              <div class="input-group mt-2">
+                <img id="help-and-support" src="./assets/icon/Help_And_Support.png" width="30px" height="30px" />
+                <select id="currentStatus" onchange="changeAgentStatus(this)">
                   <option value="1">Avalible</option>
                   <option value="2">Active</option>
                   <option value="3">Wrap</option>
@@ -748,8 +793,20 @@
                 </select>
               </div>
 
-              <div class="input-group  mt-2">
+              <!-- 
+                            <div class="input-group-sm mb-1">
+                                <input type="text" class="form-control form-control-sm" id="destAgent"
+                                    placeholder="Agent" />
+                                <input type="text" class="form-control form-control-sm" id="agentMsg"
+                                    placeholder="Type message here.." />
+                                <button id="SendMsgBtn" class="btn btn-warning btn-sm btn-block shadow"
+                                    onclick="checkInput('on')">
+                                    Send
+                                </button>
+                            </div> 
+-->
 
+              <div class="input-group mt-2">
                 <div class="col-xs-1">
                   <input type="text" class="form-control form-control-sm" id="destAgent" placeholder="Agent" />
                 </div>
@@ -765,8 +822,6 @@
                   </button>
                 </div>
               </div>
-              
-              <!-- Step7 End  -->
             </div>
           </div>
         </tr>
@@ -786,9 +841,7 @@
       </div>
     </div>
 
-    <div class="col-md-12 text-center pt-2">
-
-    </div>
+    <div class="col-md-12 text-center pt-2"></div>
   </div>
   </div>
 
