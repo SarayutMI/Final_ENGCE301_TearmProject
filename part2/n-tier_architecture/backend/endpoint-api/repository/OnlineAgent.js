@@ -1,6 +1,5 @@
 const sql = require('mssql');
-const sqlConfig = require('../sqlConfig')['development'];
-
+const { sqlConfig } = require("../config");
 const { v4: uuid } = require('uuid');
 
 console.log("sqlConfig: ", sqlConfig);
@@ -45,6 +44,21 @@ async function getOnlineAgentByAgentCode(agentcode) {
     }
 }
 
+/**
+ *
+ * @param {string} agent_code
+ * @param {"LOGIN" | "LOGOUT"} action
+ */
+async function updateAgentSession(agent_code, action) {
+    let pool = await sql.connect(sqlConfig);
+    if (action === "LOGIN") {
+      // Create login / logout history
+      await pool.query`update [OnlineAgents] set IsLogin = 1, StartOnline = ${new Date()}, LastUpdated = ${new Date()} where agent_code = ${agent_code}`;
+    } else if (action === "LOGOUT") {
+      // Create login / logout history
+      await pool.query`update [OnlineAgents] set IsLogin = 0, LastUpdated = ${new Date()} where agent_code = ${agent_code}`;
+    }
+  }
 
 async function postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus) {
 
@@ -110,8 +124,7 @@ async function postOnlineAgentStatus(AgentCode, AgentName, IsLogin, AgentStatus)
 
 
 module.exports.OnlineAgentRepo = {
-
-    getOnlineAgentByAgentCode: getOnlineAgentByAgentCode,
-    postOnlineAgentStatus, postOnlineAgentStatus
-
-}
+    getOnlineAgentByAgentCode,
+    postOnlineAgentStatus,
+    updateAgentSession,
+  };
