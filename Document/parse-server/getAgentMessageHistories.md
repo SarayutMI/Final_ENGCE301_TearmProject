@@ -1,4 +1,4 @@
-# /getAgentMessageHistories
+# /getAgentMessageHistories 📩
 Get agent message histories
 
 

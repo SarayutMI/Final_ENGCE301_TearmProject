@@ -1,4 +1,4 @@
-# /hello
+# /hello 👋
 For testing, the parse server API is functional. 
 
 

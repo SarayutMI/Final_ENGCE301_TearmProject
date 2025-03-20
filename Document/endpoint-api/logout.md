@@ -1,4 +1,4 @@
-# api/v1/auth/logout
+# api/v1/auth/logout 🚪
 Logout agent.
 
 ## API Information

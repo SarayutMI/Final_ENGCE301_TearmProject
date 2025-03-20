@@ -1,55 +1,49 @@
-# engce301 - LAB6 Solution
+# ENGCE301 - Final LAB Solution
 
+This is our Solution for the Final LAB in ENGCE301 Class
 
-This our Solution for LAB6 in ENGCE301 Class
-
-##  Overview
-
-<p align="center">
-    <br>
-    <img src="https://.gif" alt="DFD">
-    <br>
-<p>
-
-##  **API Specification Docs**
-
-Link to API Specification Documentation: [This Link](./Document/README.md).
-
-
-## Test Case (Agent Notification)
-| รายละเอียดการทดสอบ | รายละเอียดการทดสอบ | วิธีการทดสอบ | ผลลัพธ์ที่คาดหวัง | ผลการทดสอบ|
-|----------|----------|----------| ----------| ----------|
-| R 1.1| ตรวจสอบการล็อกอินด้วยรหัสผ่าน|1. เข้าไปที่หน้าเข้าสู่ระบบ 2. กรอกชื่อผู้ใช้และรหัสผ่านที่ถูกต้อง 3. กดปุ่มล็อกอิน | ระบบอนุญาตให้เข้าใช้งานได้หากข้อมูลถูกต้อง | ระบบอนุญาตให้เข้าใช้งานได้ตามที่คาดหวัง|
-|R 1.2|ตรวจสอบการเก็บบันทึกการล็อกอินและล็อกเอาต์ | 1. ล็อกอินเข้าสู่ระบบ 2. ออกจากระบบ 3. ดูบันทึกกิจกรรม|บันทึกการล็อกอินและล็อกเอาต์พร้อมระบุเวลาที่ถูกต้อง|บันทึกข้อมูลครบถ้วนและถูกต้องตามเวลา|
-|R 1.3| ตรวจสอบการบันทึกประวัติการปรับเปลี่ยนสถานะ| 1. เข้าสู่ระบบ 2. เปลี่ยนสถานะของตัวแทน 3. ตรวจดูบันทึกสถานะ|บันทึกการเปลี่ยนสถานะพร้อมระบุเวลาเริ่มและสิ้นสุด|การเปลี่ยนสถานะถูกบันทึกอย่างสมบูรณ์|
-|R 1.4|ตรวจสอบการเก็บบันทึกการสนทนาของตัวแทน|1. เริ่มแชท 2. ส่งและรับข้อความหลายครั้ง 3. ตรวจสอบประวัติการแชท|ระบบบันทึกข้อความทั้งหมดของการสนทนา|ข้อความการสนทนาถูกบันทึกทั้งหมด|
-
-
-**Test Case (Agent Wallboard)**
-
-| รายละเอียดการทดสอบ | รายละเอียดการทดสอบ | วิธีการทดสอบ | ผลลัพธ์ที่คาดหวัง | ผลการทดสอบ|
-|----------|----------|----------| ----------| ----------|
-|R 2.1| ตรวจสอบการแสดงผลแบนเนอร์บน Wallboard|1. เข้าไปที่หน้า Wallboard 2. ดูว่าแบนเนอร์ปรากฏถูกต้องหรือไม่|แบนเนอร์แสดงผลตามการตั้งค่าที่กำหนด|แบนเนอร์แสดงผลได้ตามที่กำหนดไว้
-|R 2.2|ตรวจสอบการแสดงข้อมูลประวัติการล็อกอิน ล็อกเอาต์ และสถานะ|1. เข้าไปที่หน้า Wallboard 2. ตรวจสอบประวัติการล็อกอิน ล็อกเอาต์ และสถานะ|แสดงประวัติทั้งหมดอย่างถูกต้อง|ข้อมูลประวัติแสดงผลครบถ้วนและถูกต้อง
-|R 2.3|ตรวจสอบการแสดงประวัติการสนทนาของตัวแทน|1. เข้าไปที่หน้า Wallboard 2. ดูประวัติการแชทของตัวแทน|แสดงประวัติการสนทนาทั้งหมดอย่างถูกต้อง|ประวัติการสนทนาแสดงผลได้อย่างสมบูรณ์
-
-
-## Data Flow Diagrams
-<p align="center">
-    <br>
-    <img src=".png" alt="DFD">
-    <br>
-<p>
-
-## ER Diagrams
+## 📋 Overview Web interface
 
 <p align="center">
-    <br>
-    <img src=".jpeg" alt="ER">
-    <br>
-<p>
-    
-## **Activity Flow Diagram**
+  <img src="Document/image/UIWEB_Wallboard.gif" alt="Wallboard Interface" width="80%">
+</p>
+
+## 📚 API Specification Documentation
+
+📑 [View Complete API Documentation](./Document/README.md)
+
+## ✅ Test Cases
+
+### Agent Notification
+
+| Test ID | Description | Test Steps | Expected Results | Actual Results |
+|:-------:|:------------|:-----------|:----------------|:---------------|
+| **R 1.1** | **Login Authentication** | 1. Navigate to login page<br>2. Enter valid username and password<br>3. Click login button | System grants access if credentials are valid | System granted access as expected |
+| **R 1.2** | **Login/Logout Record Keeping** | 1. Login to the system<br>2. Logout from the system<br>3. Check activity logs | Login and logout activities are recorded with correct timestamps | Records are complete and timestamps are accurate |
+| **R 1.3** | **Status Change History** | 1. Login to the system<br>2. Change agent status<br>3. Review status logs | Status changes are recorded with start and end times | Status changes completely recorded |
+| **R 1.4** | **Agent Conversation Logging** | 1. Initiate chat<br>2. Send and receive multiple messages<br>3. Check chat history | System records all conversation messages | All conversation messages recorded |
+
+### Agent Wallboard
+
+| Test ID | Description | Test Steps | Expected Results | Actual Results |
+|:-------:|:------------|:-----------|:----------------|:---------------|
+| **R 2.1** | **Wallboard Banner Display** | 1. Navigate to Wallboard page<br>2. Verify banner appears correctly | Banner displays according to configured settings | Banner displayed as configured |
+| **R 2.2** | **Login/Logout and Status History Display** | 1. Navigate to Wallboard page<br>2. Review login, logout and status history | All history displayed correctly | History data displayed completely and accurately |
+| **R 2.3** | **Agent Conversation History Display** | 1. Navigate to Wallboard page<br>2. View agent chat history | All conversation history displayed correctly | Conversation history displayed completely |
+
+## 📊 Data Flow Diagrams
+
+<p align="center">
+  <img src="Document/image/DataFlowDiagrams.gif" alt="Data Flow Diagrams" width="720">
+</p>
+
+## 🗃️ ER Diagrams
+
+<p align="center">
+  <img src="Document/image/ERDiagram.gif" alt="ER Diagram" width="720">
+</p>
+
+## 🔄 Activity Flow Diagram
 
 ```mermaid
 stateDiagram
@@ -78,11 +72,22 @@ stateDiagram
   s5:Wallboard-fe
   s6:Parse-Server
   s7:MongoDB
-
 ```
 
-## Our Team
-| Name | Student ID | ROLE |
-|----------|----------|----------|
-| นาย ปพน แซ่จ๊ะ | 65543206021-9-7 | System Analyst & Tester|
-| นาย ศรายุทธ มีปัญญา | 65543206037-5 | Team Leader & Developer |
+## 👥 Our Team
+
+| Profile | Name | Student ID | Role | GitHub |
+|:-------:|:-----|:-----------|:-----|:-------|
+| <img src="https://avatars.githubusercontent.com/u/108066406?v=4" width="60" height="60" style="border-radius: 50%;" /> | Papon Saejar | 65543206021-9-7 | System Analyst & Tester | [papon-saejar](https://github.com/papon-saejar) |
+| <img src="https://avatars.githubusercontent.com/u/108041952?v=4" width="60" height="60" style="border-radius: 50%;" /> | Sarayut Meepanya | 65543206037-5 | Team Leader & Developer | [sarayut-meepanya](https://github.com/sarayut-meepanya) |
+
+## 📁 Our Team GitHub Repository
+
+Visit Sarayut project repository: [Github-SarayutMI](https://github.com/SarayutMI)
+
+Visit Papon project repository: [Github-Paponsaeja](https://github.com/Paponsaeja)
+
+---
+<p align="center">
+  <i>Submitted March 2025 • Department of Computer Engineering</i>
+</p>

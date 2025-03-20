@@ -1,4 +1,4 @@
-# /getAgentStatusHistories
+# /getAgentStatusHistories 📊
 Get agent status change histories
 
 
