@@ -148,8 +148,8 @@ stateDiagram-v2
 
 | Profile | Name | Student ID | Role |
 |:-------:|:-----|:-----------|:-----|
-| <img src="https://avatars.githubAgentcontent.com/u/108066406?v=4" width="60" height="60" style="border-radius: 50%;" /> | Sarayut Meepanya | 65543206037-5 | Team Leader & Developer |
-| <img src="https://avatars.githubAgentcontent.com/u/108041952?v=4" width="60" height="60" style="border-radius: 50%;" /> | Papon Saeja | 65543206021-9 | System Analyst & Tester |
+| <img src="https://avatars.githubusercontent.com/u/108066406?v=4" width="60" height="60" style="border-radius: 50%;" /> | Sarayut Meepanya | 65543206037-5 | Team Leader & Developer |
+| <img src="https://avatars.githubusercontent.com/u/108041952?s=96&v=4" width="60" height="60" style="border-radius: 50%;" /> | Papon Saeja | 65543206021-9 | System Analyst & Tester |
 
 ## 📁 Our Team GitHub Repository
 
