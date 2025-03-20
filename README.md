@@ -76,10 +76,10 @@ stateDiagram
 
 ## 👥 Our Team
 
-| Profile | Name | Student ID | Role | GitHub |
-|:-------:|:-----|:-----------|:-----|:-------|
-| <img src="https://avatars.githubusercontent.com/u/108066406?v=4" width="60" height="60" style="border-radius: 50%;" /> | Papon Saejar | 65543206021-9-7 | System Analyst & Tester | [papon-saejar](https://github.com/papon-saejar) |
-| <img src="https://avatars.githubusercontent.com/u/108041952?v=4" width="60" height="60" style="border-radius: 50%;" /> | Sarayut Meepanya | 65543206037-5 | Team Leader & Developer | [sarayut-meepanya](https://github.com/sarayut-meepanya) |
+| Profile | Name | Student ID | Role |
+|:-------:|:-----|:-----------|:-----|
+| <img src="https://avatars.githubusercontent.com/u/108066406?v=4" width="60" height="60" style="border-radius: 50%;" /> | Papon Saejar | 65543206021-9-7 | System Analyst & Tester |
+| <img src="https://avatars.githubusercontent.com/u/108041952?v=4" width="60" height="60" style="border-radius: 50%;" /> | Sarayut Meepanya | 65543206037-5 | Team Leader & Developer |
 
 ## 📁 Our Team GitHub Repository
 
